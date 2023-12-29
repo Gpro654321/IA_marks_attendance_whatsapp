@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student_Report</title>
+<link rel='stylesheet'type='text/css' href='../css/base.css'>
+<link href='https://fonts.googleapis.com/css?family=Rouge Script' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Cormorant%20Garamond' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+<style>
+
+
+</style>
+
+</head>
+
+<body>
+<div class='seniormost'>
+
+<div class='topBanner'>
+<div class="collegeEmblem">
+	<img src='../res/emblem.jpeg'>
+</div>
+<div class="topBannerTitle">
+	<div class="IEC">
+	Department Of Physiology
+	</div>
+
+	<div class="college">
+	Government Tiruvarur Medical College
+	<br>
+	Tiruvarur - 610004 
+	</div>
+</div>
+</div>
+<div class="horizontalLine">
+	<hr>
+</div>
+<!-- This is the div of the main content-->
+<div class="mainContent">
+
+<div class="rightCol">
+<!--ref no -->
+<div class="refNo">
+	Ref.No.GTMC/ PHY/ {{ refno }}
+</div>
+
+<div class="certificateContent">
+	<span class="certificateContent1">
+		Dear Parent, Please find below your ward 
+	</span>
+	<span class="certificateContent2">
+		{{ name }}
+	</span>
+	<span class="certificateContent1">
+		's internal marks and attendances.	
+	</span>
+
+</div>
+
+<div class="tables">
+	Internal Assessment
+	<table>
+    <thead>
+        <tr>
+            {% for column in table_headers %}
+            <th>{{ column }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in table_data %}
+        <tr>
+            {% for cell in row %}
+            <td>{{ cell }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</div>
+
+<!--signingArea start-->
+<div class='signingArea'>
+<div class="signingAuthority">
+	Head Of the Department	
+</div>
+
+<div class="signingAuthorityDesignation">
+	Department of Physiology,<br>
+	Government Tiruvarur Medical College,<br>
+	Tiruvarur - 610004
+</div>
+</div>
+<!--end of signingArea-->
+
+
+</div>
+
+</div>
+
+
+</div>
+</body>
+	
+</html>
