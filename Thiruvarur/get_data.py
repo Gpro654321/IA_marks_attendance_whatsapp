@@ -8,6 +8,8 @@ import sys
 import itertools
 
 
+from pdfcreator import html_to_pdf
+
 # use the service account credentials
 gc = gspread.service_account(
     filename='./ia-marks-whatsapp-3c2e08dd11d9.json'
@@ -18,8 +20,9 @@ gc = gspread.service_account(
 # spreadsheet = gc.open_by_key('10-uabmR_EIqKLtQBt6a7df8yTxw1wJia7U7yS9v53gI')
 
 # test spreadsheet
-# spreadsheet = gc.open_by_key('19WMSN5aYv2dsN56R0kwD5Ut2nKzV91uYkE0nTzhCeW4')
-spreadsheet = gc.open_by_key('10-uabmR_EIqKLtQBt6a7df8yTxw1wJia7U7yS9v53gI')
+spreadsheet = gc.open_by_key('19WMSN5aYv2dsN56R0kwD5Ut2nKzV91uYkE0nTzhCeW4')
+
+# spreadsheet = gc.open_by_key('10-uabmR_EIqKLtQBt6a7df8yTxw1wJia7U7yS9v53gI')
 
 
 # open the worksheet using the sheet name
@@ -102,14 +105,25 @@ for details_row, ia_row, attendance_row in itertools.zip_longest(
         name = str(details_row.name).upper(),
         roll_no = str(details_row.student_roll_no).upper(),
         ia_table_headers = df_ia.columns,
-        ia_table_data = [list(ia_row)]
+        ia_table_data = [list(ia_row)],
+        attendance_table_headers = df_attendance.columns,
+        attendance_table_data = [list(attendance_row)]
     )
     
     candidate_name = details_row.name 
     roll_no = str(details_row.student_roll_no).upper().zfill(4)
     # write the rendered html string to a file
-    html_file_name = f"student_report{roll_no}_{candidate_name}.html"
+    html_file_name = f"student_report_{roll_no}_{candidate_name}.html"
     html_file_path = os.path.join(html_dir, html_file_name)
     with open(html_file_path, 'w') as f:
         print("creating file ",roll_no)
         f.write(rendered_html)
+
+
+    print("creating pdf file", roll_no)
+    html_to_pdf(html_file_path)
+
+    # to prevent clutter of the html_files folder the html files
+    # will be moved to a backup directory 
+    backup_file_path = os.path.join(html_backup_dir,html_file_name)
+    shutil.move(html_file_path, backup_file_path)

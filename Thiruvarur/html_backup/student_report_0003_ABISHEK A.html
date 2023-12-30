@@ -41,7 +41,7 @@
 <div class="rightCol">
 <!--ref no -->
 <div class="refNo">
-	Ref.No.GTMC/ PHY/ {{ refno }}
+	Ref.No.GTMC/ PHY/ 20231230141925333564
 </div>
 
 <div class="certificateContent">
@@ -53,7 +53,7 @@
 			Please find below your ward's
 	</span>
 	<span class="certificateContent2">
-		(name: {{ name }}, roll no: {{ roll_no }})
+		(name: ABISHEK A, roll no: 3)
 	</span>
 	<span class="secondline">
 		internal marks and attendances.	
@@ -67,19 +67,23 @@
 	<table>
 		<thead>
 			<tr>
-			    {% for column in ia_table_headers %}
-			    <th>{{ column }}</th>
-			    {% endfor %}
+			    
+			    <th>IA_1_Theory_ 30</th>
+			    
+			    <th>IA_2_Theory_ 100</th>
+			    
 			</tr>
 		</thead>
 		<tbody>
-			{% for row in ia_table_data %}
+			
 			<tr>
-			    {% for cell in row %}
-			    <td>{{ cell }}</td>
-			    {% endfor %}
+			    
+			    <td>7</td>
+			    
+			    <td>25</td>
+			    
 			</tr>
-			{% endfor %}
+			
 		</tbody>
 	</table>
 
@@ -89,19 +93,23 @@
 	<table>
 		<thead>
 			<tr>
-			    {% for column in attendance_table_headers %}
-			    <th>{{ column }}</th>
-			    {% endfor %}
+			    
+			    <th>Physiology_Theory_Attendance_Sep-Nov</th>
+			    
+			    <th>Physiology_Practical_Attendance_Sep-Nov</th>
+			    
 			</tr>
 		</thead>
 		<tbody>
-			{% for row in attendance_table_data %}
+			
 			<tr>
-			    {% for cell in row %}
-			    <td>{{ cell }}</td>
-			    {% endfor %}
+			    
+			    <td>91.46666667</td>
+			    
+			    <td>100.00</td>
+			    
 			</tr>
-			{% endfor %}
+			
 		</tbody>
 	</table>
 

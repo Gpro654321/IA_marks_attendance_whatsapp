@@ -11,6 +11,7 @@ body {
     margin: 0mm;
 }  
 
+
 .seniormost {
 	display: flex;
 	flex-direction: column;
@@ -78,6 +79,8 @@ hr {
 	border: 1mm;
 	margin-left: 5mm;
 }
+
+
 
 .mainContent{
 
@@ -173,11 +176,25 @@ hr {
 
 }
 
+.secondline {
+	color: #46458C;
+	text-align: justify;
+	text-justify: inherit;
+	margin-left:50px;
+	text-indent: 70px;
+	font-family: Rouge Script;
+	font-style: normal;
+	font-size: 24px;
+	font-weight: 400;
+	line-height: normal;
+}
+
 .certificateContent2, .tables {
 
 	color: #46458C;
 	text-align: justify;
 	text-justify: inherit;
+	text-indent: 70px;
 	font-family: Times New Roman;
 	font-style: normal;
 	font-size: 19px;
