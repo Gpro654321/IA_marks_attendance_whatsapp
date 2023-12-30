@@ -53,7 +53,7 @@
 			Please find below your ward's
 	</span>
 	<span class="certificateContent2">
-		(name: {{ name }}, roll no: {{ roll_no }})
+		({{ name }}, roll no: {{ roll_no }})
 	</span>
 	<span class="secondline">
 		internal marks and attendances.	
@@ -62,9 +62,13 @@
 
 </div>
 
-<div class="tables">
+<br>
+
+<div class="certificateContent2">
 	Internal Assessment
-	<table>
+</div>
+<div>
+	<table class="tables">
 		<thead>
 			<tr>
 			    {% for column in ia_table_headers %}
@@ -84,9 +88,13 @@
 	</table>
 
 	<br>
+</div>
 
+<div class="certificateContent2">
 	Attendance
-	<table>
+</div>
+<div>
+	<table class="tables">
 		<thead>
 			<tr>
 			    {% for column in attendance_table_headers %}
@@ -98,13 +106,12 @@
 			{% for row in attendance_table_data %}
 			<tr>
 			    {% for cell in row %}
-			    <td>{{ cell }}</td>
+			    <td>{{ cell }} %</td>
 			    {% endfor %}
 			</tr>
 			{% endfor %}
 		</tbody>
 	</table>
-
 </div>
 
 <!--signingArea start-->

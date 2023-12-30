@@ -58,7 +58,15 @@ print("df_attendance shape", df_attendance.shape)
 
 # gather the column headers from the original dataframe
 details_column_headers = df_original_details.iloc[0]
-ia_column_headers = df_original_ia.iloc[0]
+
+# The column header of the internal assessment sheet is of the form IA-30, where
+# the part after the "-" is the maximum mark
+ia_column_headers_split = df_original_ia.iloc[0].str.split("-")
+# The first part of hte split
+ia_column_headers = ia_column_headers_split.str.get(0)
+# The pandas series with the maximum marks
+ia_column_max_marks = pd.Series(ia_column_headers_split.str.get(1), dtype="string") 
+
 attendance_column_headers = df_original_attendance.iloc[0]
 
 # assign column header names from the above created column names
@@ -96,7 +104,20 @@ for details_row, ia_row, attendance_row in itertools.zip_longest(
     df_ia.itertuples(index=False),
     df_attendance.itertuples(index=False)
 ):
+
+    
+    # generate the ia marks in the form obtained/max eg 15/30
     print("ia_row", [list(ia_row)])
+    ia_marks_space_seperated = ((ia_row + ia_column_max_marks).astype("string"))
+    ia_marks_obtained_max_list = ia_marks_space_seperated.str.split(" ")
+    print(ia_marks_space_seperated.str.split(" "))
+    separator = " / "
+    ia_marks_frac = ia_marks_obtained_max_list.apply(lambda x: separator.join(x))
+    print(ia_marks_frac)
+
+    # convert the attendance percentages to 2 significant digits
+    attendance_row = pd.Series(attendance_row, dtype="float64")
+    attendance_row = attendance_row.apply(lambda x: round(x, 2))
 
     now = datetime.datetime.now()
     current_time_string = now.strftime("%Y%m%d%H%M%S%f")
@@ -105,7 +126,7 @@ for details_row, ia_row, attendance_row in itertools.zip_longest(
         name = str(details_row.name).upper(),
         roll_no = str(details_row.student_roll_no).upper(),
         ia_table_headers = df_ia.columns,
-        ia_table_data = [list(ia_row)],
+        ia_table_data = [list(ia_marks_frac)],
         attendance_table_headers = df_attendance.columns,
         attendance_table_data = [list(attendance_row)]
     )
