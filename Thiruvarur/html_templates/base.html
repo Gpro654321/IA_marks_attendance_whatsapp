@@ -59,6 +59,7 @@
 	</span>
 	<span class="certificateContent1">
 		internal marks and attendances.	
+		's internal marks and attendances.	
 	</span>
 
 </div>
@@ -87,6 +88,23 @@
 	<br>
 
 	Attendance
+    <thead>
+        <tr>
+            {% for column in table_headers %}
+            <th>{{ column }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in table_data %}
+        <tr>
+            {% for cell in row %}
+            <td>{{ cell }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
 </div>
 

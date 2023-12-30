@@ -18,7 +18,8 @@ gc = gspread.service_account(
 # spreadsheet = gc.open_by_key('10-uabmR_EIqKLtQBt6a7df8yTxw1wJia7U7yS9v53gI')
 
 # test spreadsheet
-spreadsheet = gc.open_by_key('19WMSN5aYv2dsN56R0kwD5Ut2nKzV91uYkE0nTzhCeW4')
+# spreadsheet = gc.open_by_key('19WMSN5aYv2dsN56R0kwD5Ut2nKzV91uYkE0nTzhCeW4')
+spreadsheet = gc.open_by_key('10-uabmR_EIqKLtQBt6a7df8yTxw1wJia7U7yS9v53gI')
 
 
 # open the worksheet using the sheet name
