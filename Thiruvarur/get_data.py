@@ -6,6 +6,8 @@ import datetime
 import shutil
 import sys
 import itertools
+import requests
+import urllib.parse
 
 
 from pdfcreator import html_to_pdf
@@ -96,6 +98,12 @@ if not os.path.exists(pdf_dir):
     print("pdf_dir NOT found, creating it ..")
     os.makedirs(pdf_dir)
 
+# create a directory to put the pdf files that were sent
+sent_dir = "./sent"
+if not os.path.exists(sent_dir):
+    print("sent_dir NOT found, creating it ...")
+    os.makedirs(sent_dir)
+
 
 
 # Apply the render function to each row and generate the HTML file
@@ -148,3 +156,5 @@ for details_row, ia_row, attendance_row in itertools.zip_longest(
     # will be moved to a backup directory 
     backup_file_path = os.path.join(html_backup_dir,html_file_name)
     shutil.move(html_file_path, backup_file_path)
+
+
