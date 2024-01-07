@@ -14,4 +14,4 @@ def html_to_pdf(file_path):
     
     # create the pdf output
     HTML(file_path).write_pdf(dest_file_path)
-    return
+    return(dest_file_name)

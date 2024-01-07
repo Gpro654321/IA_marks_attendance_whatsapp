@@ -10,22 +10,45 @@ import requests
 import urllib.parse
 
 
+from dotenv import load_dotenv
+
 from pdfcreator import html_to_pdf
+from send_via_whatsapp import sendFileViaWhatsapp_post
+
+# load the environment variables
+
+load_dotenv('./.param.env')
 
 # use the service account credentials
+access_key_file_path = os.getenv('ACCESS_KEY_FILE_PATH')
 gc = gspread.service_account(
-    filename='./ia-marks-whatsapp-3c2e08dd11d9.json'
+    filename=access_key_file_path
 )
 
+operation_mode = str(
+                        input(
+                        "Is this test or production?\n"+
+                        "type 'test' if test environment\n"+
+                        "else type 'production' if the environment is production\n"
+                       ) 
+                    )
+print("The operation mode is ", operation_mode)
 
-# open the spreadsheet with spreadsheet key
-# spreadsheet = gc.open_by_key('10-uabmR_EIqKLtQBt6a7df8yTxw1wJia7U7yS9v53gI')
+if operation_mode == 'test':
+    print("running test mode")
 
-# test spreadsheet
-spreadsheet = gc.open_by_key('19WMSN5aYv2dsN56R0kwD5Ut2nKzV91uYkE0nTzhCeW4')
+    # test spreadsheet
+    test_spreadsheet_key = os.getenv('TIRUVARUR_TEST_SPREADSHEET_KEY')
+    spreadsheet = gc.open_by_key(test_spreadsheet_key)
 
-# spreadsheet = gc.open_by_key('10-uabmR_EIqKLtQBt6a7df8yTxw1wJia7U7yS9v53gI')
+if operation_mode == 'production':
+    print("running production mode")
+    # production spreadsheet
+    prod_spreadsheet_key = os.getenv('TIRUVARUR_PROD_SPREADSHEET_KEY')
+    spreadsheet = gc.open_by_key(prod_spreadsheet_key)
 
+thiruvarur_token = os.getenv('TIRUVARUR_TOKEN')
+print(thiruvarur_token)
 
 # open the worksheet using the sheet name
 details = spreadsheet.worksheet('Details')
@@ -150,11 +173,35 @@ for details_row, ia_row, attendance_row in itertools.zip_longest(
 
 
     print("creating pdf file", roll_no)
-    html_to_pdf(html_file_path)
+    pdf_file_name = html_to_pdf(html_file_path)
+    pdf_file_path = os.path.join(pdf_dir, pdf_file_name)
+    print("pdf file path", pdf_file_path)
 
     # to prevent clutter of the html_files folder the html files
     # will be moved to a backup directory 
     backup_file_path = os.path.join(html_backup_dir,html_file_name)
     shutil.move(html_file_path, backup_file_path)
 
+    
+    # send the the file via whatsapp
+    # the following are the post parameters
+    phone = str(91) + str(details_row.mobile_no)
+    print("phone_no", phone)
+
+
+
+    test_caption = ("Dear Parent,\n" +
+                    "The document attached above," +
+                    "contains the performance evaluation of [son/daughter] in the Department of Physiology."+
+                    "\n\n"+
+                    "HOD of Physiology,\n"+
+                    "Govt. Tiruvarur Medical College, Tiruvarur")
+
+    sendFileViaWhatsapp_post(thiruvarur_token, phone, pdf_file_path, test_caption)
+    
+
+    # to prevent clutter of the pdf files that were sent
+    # will be moved to the sent directory
+    sent_file_path = os.path.join(sent_dir,pdf_file_name)
+    shutil.move(pdf_file_path, sent_file_path)
 

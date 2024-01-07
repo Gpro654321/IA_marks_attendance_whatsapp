@@ -1,0 +1,27 @@
+-----------------------------22430408457308400391814851993
+Content-Disposition: form-data; name="instanceID"
+
+658da9dba0b86261879989f7
+-----------------------------22430408457308400391814851993
+Content-Disposition: form-data; name="phone"
+
+919443015064
+-----------------------------22430408457308400391814851993
+Content-Disposition: form-data; name="file"; filename="test.pdf"
+Content-Type: application/pdf
+
+%PDF-1.7
+%ð¤
+5 0 obj
+<</Filter /FlateDecode/Length 1396>>
+stream
+xÚ­XÛn7}ß¯àæ3¼
+
+----------------------------22430408457308400391814851993
+Content-Disposition: form-data; name="caption"
+
+test
+-----------------------------22430408457308400391814851993--
+
+
+https://wasmsapi.com/client/v1/message/send-file
