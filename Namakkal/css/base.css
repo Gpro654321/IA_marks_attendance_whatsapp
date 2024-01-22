@@ -33,7 +33,7 @@ body {
 
 .collegeEmblem img{
 	width: 100%;
-	height: 95%;
+	height: 93%;
 }
 
 
@@ -53,9 +53,9 @@ body {
 .IEC {
 	color: #BB2525;
 	text-align: center;
-	font-family: Rouge Script;
+	font-family: Times New Roman;
 	font-style: normal;
-	font-size: 60px;
+	font-size: 40px;
 	font-weight: 700;
 	line-height: normal;
 }
@@ -167,9 +167,9 @@ hr {
 	color: #46458C;
 	text-align: justify;
 	text-justify: inherit;
-	font-family: Rouge Script;
+	font-family: Times New Roman;
 	font-style: normal;
-	font-size: 24px;
+	font-size: 18px;
 	font-weight: 400;
 	line-height: normal;
 	
@@ -182,9 +182,9 @@ hr {
 	text-justify: inherit;
 	margin-left:50px;
 	text-indent: 70px;
-	font-family: Rouge Script;
+	font-family: Times New Roman;
 	font-style: normal;
-	font-size: 24px;
+	font-size: 15px;
 	font-weight: 400;
 	line-height: normal;
 }
@@ -197,7 +197,7 @@ hr {
 	text-indent: 50px;
 	font-family: Times New Roman;
 	font-style: normal;
-	font-size: 19px;
+	font-size: 15px;
 	font-weight: 500;
 	line-height: normal;
 
@@ -218,10 +218,9 @@ hr {
 
 .certificateContent4 {
 
-	color: #BB2525;
+	color: #46458C;
 	text-align: justify;
 	text-justify: inherit;
-	text-indent: 50px;
 	font-family: Times New Roman;
 	font-style: italic;
 	font-size: 12px;
@@ -282,10 +281,17 @@ th {
 
 	color: #46458C;
 	text-align: right;
-	font-family: Rouge Script;
+	font-family: Times New Roman;
 	font-style: normal;
-	font-size: 20px;
+	font-size: 14px;
 	font-weight: 400;
 	line-height: normal;
+
+}
+
+.parentsSignature img{
+	margin-left: 5mm;
+	width:20%;
+	height:90%;
 
 }
