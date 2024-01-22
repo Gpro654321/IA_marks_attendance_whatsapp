@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student_Report</title>
+<link rel='stylesheet'type='text/css' href='../css/base.css'>
+<link href='https://fonts.googleapis.com/css?family=Rouge Script' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Cormorant%20Garamond' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+<style>
+
+
+</style>
+
+</head>
+
+<body>
+<div class='seniormost'>
+
+<div class='topBanner'>
+<div class="collegeEmblem">
+	<img src='../res/emblem.jpeg'>
+</div>
+<div class="topBannerTitle">
+	<div class="IEC">
+	Department Of Physiology
+	</div>
+
+	<div class="college">
+	Government Medical College 
+	<br>
+	Namakkal - 637003 
+	</div>
+</div>
+</div>
+<div class="horizontalLine">
+	<hr>
+</div>
+<!-- This is the div of the main content-->
+<div class="mainContent">
+
+<div class="rightCol">
+<!--ref no -->
+<div class="refNo">
+	Ref.No.GNMC/ PHY/ {{ refno }}
+</div>
+
+<div class="certificateContent">
+	<p class="certificateContent1">
+		Dear Parent,<br>  
+	</p>
+	<p>
+	<span class="secondline">
+			Please find below your ward's
+	</span>
+	<span class="certificateContent2">
+		({{ name }}, roll no: {{ roll_no }})
+	</span>
+	<span class="secondline">
+		internal marks and attendances.	
+	</span>
+	</p>
+
+</div>
+
+<br>
+
+<div class="certificateContent2">
+	<u>Internal Assessment</u>
+</div>
+<div>
+
+	<div class="certificateContent3">
+		Theory	
+	</div>
+
+	<table class="tables">
+		<thead>
+			<tr>
+			    {% for column in ia_theory_table_headers %}
+			    <th>{{ column }}</th>
+			    {% endfor %}
+			</tr>
+		</thead>
+		<tbody>
+			{% for row in ia_theory_table_data %}
+			<tr>
+			    {% for cell in row %}
+			    <td>{{ cell }}</td>
+			    {% endfor %}
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<br>
+</div>
+
+<div>
+
+	<div class="certificateContent3">
+		Practical	
+	</div>
+	<table class="tables">
+		<thead>
+			<tr>
+			    {% for column in ia_practical_table_headers %}
+			    <th>{{ column }}</th>
+			    {% endfor %}
+			</tr>
+		</thead>
+		<tbody>
+			{% for row in ia_practical_table_data %}
+			<tr>
+			    {% for cell in row %}
+			    <td>{{ cell }}</td>
+			    {% endfor %}
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<br>
+</div>
+
+<div class="certificateContent2">
+	<u>Attendance</u>
+</div>
+<div>
+
+	<div class="certificateContent3">
+		Theory	
+	</div>
+	<table class="tables">
+		<thead>
+			<tr>
+			    {% for column in attendance_theory_table_headers %}
+			    <th>{{ column }}</th>
+			    {% endfor %}
+			</tr>
+		</thead>
+		<tbody>
+			{% for row in attendance_theory_table_data %}
+			<tr>
+			    {% for cell in row %}
+			    <td>{{ cell }} %</td>
+			    {% endfor %}
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<br>
+</div>
+
+<div>
+
+	<div class="certificateContent3">
+		Practical	
+	</div>
+	<table class="tables">
+		<thead>
+			<tr>
+			    {% for column in attendance_practical_table_headers %}
+			    <th>{{ column }}</th>
+			    {% endfor %}
+			</tr>
+		</thead>
+		<tbody>
+			{% for row in attendance_practical_table_data %}
+			<tr>
+			    {% for cell in row %}
+			    <td>{{ cell }} %</td>
+			    {% endfor %}
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<br>
+</div>
+
+<!--signingArea start-->
+<div class='signingArea'>
+<div class="signingAuthority">
+	Head Of the Department	
+</div>
+
+<div class="signingAuthorityDesignation">
+	Department of Physiology,<br>
+	Government Medical College,<br>
+	Namakkal - 637003 
+</div>
+</div>
+<!--end of signingArea-->
+
+
+</div>
+
+</div>
+<!-- disclaimer -->
+<div class='certificateContent4'>
+(Note: This is a computer generated document, hence no signature is required.)
+</div>
+<!-- end of disclaimer-->
+
+
+</div>
+</body>
+	
+</html>
