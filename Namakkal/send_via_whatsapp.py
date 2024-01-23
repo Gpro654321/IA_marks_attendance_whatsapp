@@ -7,9 +7,10 @@ from dotenv import load_dotenv
 def sendFileViaWhatsapp_post(
     college_token,whatsapp_phone_no,filename,caption):
     post_params1 = {
-        "uid" : "918438815064",
-        "pass" : "Pkp@1234"
+        "uid" : os.getenv("UID"),
+        "pass" : os.getenv("PASS") 
     }
+    print(post_params1)
 
     post_params2 = {
         "token" : college_token,
