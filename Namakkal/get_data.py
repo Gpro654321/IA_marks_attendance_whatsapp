@@ -13,7 +13,7 @@ import urllib.parse
 from dotenv import load_dotenv
 
 from pdfcreator import html_to_pdf
-from send_via_whatsapp import sendFileViaWhatsapp_post
+from send_via_whatsapp import sendFileViaWhatsapp_get2
 
 # load the environment variables
 
@@ -29,9 +29,12 @@ operation_mode = str(
                         input(
                         "Is this test or production?\n"+
                         "type 'test' if test environment\n"+
-                        "else type 'production' if the environment is production\n"
+                        "type 'check_msg' if checking whatsapp delivery\n"+
+                        "else type 'production' if the environment is production\n"+
+                        "else type 'stray' if the environment is stray\n"
                        ) 
                     )
+# use stray if messaging is to be done for leftovers after errors
 print("The operation mode is ", operation_mode)
 
 if operation_mode == 'test':
@@ -41,10 +44,24 @@ if operation_mode == 'test':
     test_spreadsheet_key = os.getenv('TEST_SPREADSHEET_KEY')
     spreadsheet = gc.open_by_key(test_spreadsheet_key)
 
+if operation_mode == 'check_msg':
+    print('running check_msg mode')
+    # test spreadsheet
+    test_spreadsheet_key = os.getenv('TEST_SPREADSHEET_KEY')
+    spreadsheet = gc.open_by_key(test_spreadsheet_key)
+
+
+
 if operation_mode == 'production':
     print("running production mode")
     # production spreadsheet
     prod_spreadsheet_key = os.getenv('PROD_SPREADSHEET_KEY')
+    spreadsheet = gc.open_by_key(prod_spreadsheet_key)
+
+if operation_mode == 'stray':
+    print("running stray mode")
+    # production spreadsheet
+    prod_spreadsheet_key = os.getenv('STRAY_SPREADSHEET_KEY')
     spreadsheet = gc.open_by_key(prod_spreadsheet_key)
 
 token = os.getenv('TOKEN')
@@ -231,6 +248,9 @@ for (details_row,
     pdf_file_path = os.path.join(pdf_dir, pdf_file_name)
     print("pdf file path", pdf_file_path)
 
+    pdf_url = os.getenv('NGROK_BASE_URL') + pdf_file_name
+    print("pdf_url", pdf_url)
+
     # to prevent clutter of the html_files folder the html files
     # will be moved to a backup directory 
     backup_file_path = os.path.join(html_backup_dir,html_file_name)
@@ -245,7 +265,7 @@ for (details_row,
 
 
     test_caption = ("Dear Parent,\n" +
-                    "The document attached above," +
+                    "The document attached above, " +
                     "contains the performance evaluation of [son/daughter] in the Department of Physiology."+
                     "\n\n"+
                     "HOD of Physiology,\n"+
@@ -253,8 +273,22 @@ for (details_row,
 
     if operation_mode == "test":
         pass
-    elif operation_mode == "production":
-        sendFileViaWhatsapp_post(token, phone, pdf_file_path, test_caption)
+    elif operation_mode == 'check_msg':
+        # if the operation mode was to check sending whastapp messages
+        # this the message will be sent to my phone
+        # the for loop will also be broken
+        phone = str(91) + os.getenv("SELF_PHONE")
+        print(phone)
+        # sendFileViaWhatsapp_post(token,phone,pdf_file_path, test_caption)
+        sendFileViaWhatsapp_get2(token, phone, pdf_url, test_caption)
+        break
+    elif operation_mode == "production" :
+        # sendFileViaWhatsapp_post(token, phone, pdf_file_path, test_caption)
+        sendFileViaWhatsapp_get2(token, phone, pdf_url, test_caption)
+
+    elif operation_mode == "stray":
+        sendFileViaWhatsapp_get2(token, phone, pdf_url, test_caption)
+
     
 
     # to prevent clutter of the pdf files that were sent

@@ -11,6 +11,7 @@ import sys
 
 from dotenv import load_dotenv
 
+# {{{ upload_file_to_folder(folder_id, filepath)
 
 def upload_file_to_folder(folder_id, filepath):
 
@@ -51,7 +52,9 @@ def upload_file_to_folder(folder_id, filepath):
                                  fields='id').execute()
     print("i have uploaded")
 
+# }}}
 
+# {{{ create_folder(parent_folder_id) 
 def create_folder(parent_folder_id):
     '''
     create a folder inside a parent folder with name of the form
@@ -91,7 +94,15 @@ def create_folder(parent_folder_id):
     print(folder_id)
     return folder_id
 
-    
+
+
+# }}}
+
+#{{{ file_sharing(file) 
+#}}}
+
+ 
+
 
 
 # filepath = './pdf_files/iec_cert_10_Dr.pdf'
