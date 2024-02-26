@@ -37,6 +37,16 @@ operation_mode = str(
 # use stray if messaging is to be done for leftovers after errors
 print("The operation mode is ", operation_mode)
 
+sheet_id_set = str(
+    input(
+        "Have you set the correct id of the sheet id in the param file?\n"
+        "type 'yes' if set properly\n"
+    )
+)
+
+if sheet_id_set != 'yes':
+    sys.exit("Set the sheet id correctly in the 'param' file")
+
 ngrok_conf = str(
     input(
         "Have you started ngrok?\n"+
@@ -282,7 +292,7 @@ for (details_row,
                     "contains the performance evaluation of [son/daughter] in the Department of Physiology."+
                     "\n\n"+
                     "HOD of Physiology,\n"+
-                    "Govt. Medical College, Namakkal")
+                    "KAPV Govt. Medical College, Tiruchirapalli")
 
     if operation_mode == "test":
         pass

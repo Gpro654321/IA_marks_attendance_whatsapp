@@ -1,0 +1,114 @@
+Is this test or production?
+type 'test' if test environment
+else type 'production' if the environment is production
+The operation mode is  test
+running test mode
+658da9dba0b86261879989f7
+                 0                 1           2
+0  student_roll_no              name   mobile_no
+1                1            Test 1  9442795131
+2                2            Test 2  9976054425
+3                3            Test 3  8851335393
+4                4  Ramesh Sivathanu  8851335393
+           0          1          2
+0  IA_1- 100  IA_2- 100  IA_3- 100
+1         47         56          A
+2         32         38         44
+3         31         41         28
+4         70         65         67
+          0
+0  IA_1- 40
+1        33
+2        20
+3        27
+4        31
+        0       1       2       3
+0  Sep-23  Oct-23  Nov-23  Dec-23
+1     100     100     100      86
+2     100     100     100      86
+3      91      93      94      67
+4      91      93      94      92
+        0       1       2       3
+0  Sep-23  Oct-23  Nov-23  Dec-23
+1     100     100     100     100
+2     100     100     100     100
+3     100     100     100     100
+4     100     100     100     100
+df_details shape (4, 3)
+df_ia theory shape (4, 3)
+df_ia practical shape (4, 1)
+df_attendance theory shape (4, 4)
+df_attendance practical shape (5, 4)
+df_details.columns, Index(['student_roll_no', 'name', 'mobile_no'], dtype='object', name=0)
+ia_theory_row [['47', '56', 'A']]
+0    [47, 100]
+1    [56, 100]
+2     [A, 100]
+Name: 0, dtype: object
+0    47 / 100
+1    56 / 100
+2     A / 100
+Name: 0, dtype: object
+ia_practical_row [['33']]
+0    [33, 40]
+Name: 0, dtype: object
+0    33 / 40
+Name: 0, dtype: object
+creating file  0001
+creating pdf file 0001
+pdf file path ./pdf_files/student_report_0001_Test 1.pdf
+phone_no 919442795131
+ia_theory_row [['32', '38', '44']]
+0    [32, 100]
+1    [38, 100]
+2    [44, 100]
+Name: 0, dtype: object
+0    32 / 100
+1    38 / 100
+2    44 / 100
+Name: 0, dtype: object
+ia_practical_row [['20']]
+0    [20, 40]
+Name: 0, dtype: object
+0    20 / 40
+Name: 0, dtype: object
+creating file  0002
+creating pdf file 0002
+pdf file path ./pdf_files/student_report_0002_Test 2.pdf
+phone_no 919976054425
+ia_theory_row [['31', '41', '28']]
+0    [31, 100]
+1    [41, 100]
+2    [28, 100]
+Name: 0, dtype: object
+0    31 / 100
+1    41 / 100
+2    28 / 100
+Name: 0, dtype: object
+ia_practical_row [['27']]
+0    [27, 40]
+Name: 0, dtype: object
+0    27 / 40
+Name: 0, dtype: object
+creating file  0003
+creating pdf file 0003
+pdf file path ./pdf_files/student_report_0003_Test 3.pdf
+phone_no 918851335393
+ia_theory_row [['70', '65', '67']]
+0    [70, 100]
+1    [65, 100]
+2    [67, 100]
+Name: 0, dtype: object
+0    70 / 100
+1    65 / 100
+2    67 / 100
+Name: 0, dtype: object
+ia_practical_row [['31']]
+0    [31, 40]
+Name: 0, dtype: object
+0    31 / 40
+Name: 0, dtype: object
+creating file  0004
+creating pdf file 0004
+pdf file path ./pdf_files/student_report_0004_Ramesh Sivathanu.pdf
+phone_no 918851335393

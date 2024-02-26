@@ -1,0 +1,244 @@
+@page{
+    size: a4 portrait;
+    margin: 2mm;
+}
+  
+body {
+    display: flex;
+    flex-direction: column;
+}  
+
+.seniormost {
+	height:297mm;
+	width:210mm;
+	position:absolute;
+}
+
+.topBanner {
+	height: 45mm;
+	display:flex;
+	flex-direction:row;
+	position:relative;
+}
+
+.collegeEmblem {
+	width: 45mm;
+	height: 45mm;
+	float: left;
+}
+
+.collegeEmblem img{
+	width: 100%;
+	height: 95%;
+}
+
+
+.topBannerTitle {
+	width: 168mm;
+	height: 100%;
+	float: right;
+	display: flex;
+	flex-direction: column;
+}
+
+.IEC, .college {
+	flex: 1;
+}
+
+
+.IEC {
+	color: #BB2525;
+	text-align: center;
+	font-family: Rouge Script;
+	font-style: normal;
+	font-size: 60px;
+	font-weight: 700;
+	line-height: normal;
+}
+
+.college {
+	color: #46458C;
+	text-align: center;
+	font-family: Cormorant Garamond;
+	font-style: normal;
+	font-size: 20px;
+	font-weight: 700;
+	line-height: normal;
+	
+}
+
+hr {
+
+	color: #BB2525;
+	background-color: #BB2525;
+	height: 2px;
+	border: 1mm;
+	margin: 0mm;
+	position: relative;
+	border-top: solid 1px #BB2525 !important;
+
+
+
+}
+.mainContent{
+
+    height: 245mm;
+    display: flex;
+    position: relative;
+      
+}
+
+.leftCol {
+	width: 63mm;
+	float: left;
+	display: flex;
+	flex-direction: column;
+    	 
+}
+
+.rightCol {
+	width: 147mm;
+	float: right;
+	display: flex;
+	flex-direction:column;
+	justify-content: flex-start;
+}
+
+.role {
+	color: #BB2525;
+	text-align: left;
+	font-family: Roboto;
+	font-style: normal;
+	font-size: 13px;
+	font-weight: 700;
+	line-height: normal;
+}
+
+.name {
+
+	color: #46458C;
+	text-align: left;
+	font-family: Roboto;
+	font-style: normal;
+	font-size: 11px;
+	font-weight: 700;
+	line-height: normal;
+
+}
+
+.designation {
+
+	color: #46458C;
+	text-align: left;
+	font-family: Roboto;
+	font-style: normal;
+	font-size: 10px;
+	font-weight: 350;
+	line-height: normal;
+	margin-bottom: 4px;
+
+}
+
+.members {
+	margin: 6px;
+}
+
+.refNo {
+
+	color: #46458C;
+	text-align: right;
+	font-family: Roboto;
+	font-style: normal;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: normal;
+	margin-top: 5px;
+}
+
+.certificateTitle {
+
+	color: #BB2525;
+	text-align: center;
+	font-family: Roboto;
+	font-style: normal;
+	font-size: 20px;
+	font-weight: 700;
+	line-height: normal;
+	margin: 20px;
+}
+
+.certificateContent {
+	text-align: justify;
+	text-justify: inter-word;
+	text-indent: 50px;
+	word-wrap: break-word;
+}
+
+.certificateContent1 {
+
+	color: #46458C;
+	text-align: justify;
+	text-justify: inherit;
+	font-family: Rouge Script;
+	font-style: normal;
+	font-size: 24px;
+	font-weight: 400;
+	line-height: normal;
+	
+
+}
+
+.certificateContent2 {
+
+	color: #46458C;
+	text-align: justify;
+	text-justify: inherit;
+	font-family: Cormorant Garamond;
+	font-style: normal;
+	font-size: 19px;
+	font-weight: 400;
+	line-height: normal;
+
+}
+
+.signingArea{
+	display: flex;
+	/* to shift this div to the right*/
+	align-self: flex-end;
+	flex-direction:column;
+	justify-content: flex-end;
+	width: fit-content;
+	margin-top: 100px;
+
+}
+
+.signingAuthority {
+
+	color: #46458C;
+	/*
+	text-align: right;
+	*/
+	text-align: left;
+	font-family: Cormorant Garamond;
+	font-style: normal;
+	font-size: 15px;
+	font-weight: 400;
+	line-height: normal;
+
+}
+
+.signingAuthorityDesignation {
+
+	color: #46458C;
+	/*
+	text-align: right;
+	*/
+	text-align: left;
+	font-family: Rouge Script;
+	font-style: normal;
+	font-size: 20px;
+	font-weight: 400;
+	line-height: normal;
+
+}
+
