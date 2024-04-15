@@ -13,7 +13,9 @@ import urllib.parse
 from dotenv import load_dotenv
 
 from pdfcreator import html_to_pdf
-from send_via_whatsapp import sendFileViaWhatsapp_post
+# from send_via_whatsapp import sendFileViaWhatsapp_post
+
+from send_via_whatsapp import sendFileViaWhatsapp_get2
 
 # load the environment variables
 
@@ -25,6 +27,74 @@ gc = gspread.service_account(
     filename=access_key_file_path
 )
 
+
+operation_mode = str(
+                        input(
+                        "Is this test or production?\n"+
+                        "type 'test' if test environment\n"+
+                        "type 'check_msg' if checking whatsapp delivery\n"+
+                        "else type 'production' if the environment is production\n"+
+                        "else type 'stray' if the environment is stray\n"
+                       ) 
+                    )
+# use stray if messaging is to be done for leftovers after errors
+print("The operation mode is ", operation_mode)
+
+sheet_id_set = str(
+    input(
+        "Have you set the correct id of the sheet id in the param file?\n"
+        "type 'yes' if set properly\n"
+    )
+)
+
+if sheet_id_set != 'yes':
+    sys.exit("Set the sheet id correctly in the 'param' file")
+
+ngrok_conf = str(
+    input(
+        "Have you started ngrok?\n"+
+        "type 'yes' if ngrok has started\n"
+        "if not use ngrok http --domain='gladly-leading-moose.ngrok-free.app' 'file:///home/gg/Dev/Internal_attendance_Whatsapp/Thiruvarur/pdf_files/'"
+    )
+)
+
+if ngrok_conf != 'yes':
+    sys.exit("Ngrok has not yet started, Restart after ngrok is started")
+
+
+if operation_mode == 'test':
+    print("running test mode")
+
+    # test spreadsheet
+    test_spreadsheet_key = os.getenv('TEST_SPREADSHEET_KEY')
+    spreadsheet = gc.open_by_key(test_spreadsheet_key)
+
+if operation_mode == 'check_msg':
+    print('running check_msg mode')
+    # test spreadsheet
+    test_spreadsheet_key = os.getenv('TEST_SPREADSHEET_KEY')
+    spreadsheet = gc.open_by_key(test_spreadsheet_key)
+
+
+
+if operation_mode == 'production':
+    print("running production mode")
+    # production spreadsheet
+    prod_spreadsheet_key = os.getenv('PROD_SPREADSHEET_KEY')
+    spreadsheet = gc.open_by_key(prod_spreadsheet_key)
+
+if operation_mode == 'stray':
+    print("running stray mode")
+    # production spreadsheet
+    prod_spreadsheet_key = os.getenv('STRAY_SPREADSHEET_KEY')
+    spreadsheet = gc.open_by_key(prod_spreadsheet_key)
+
+
+
+token = os.getenv('TOKEN')
+print(token)
+
+'''
 operation_mode = str(
                         input(
                         "Is this test or production?\n"+
@@ -49,6 +119,7 @@ if operation_mode == 'production':
 
 thiruvarur_token = os.getenv('TIRUVARUR_TOKEN')
 print(thiruvarur_token)
+'''
 
 # open the worksheet using the sheet name
 details = spreadsheet.worksheet('Details')
@@ -177,6 +248,9 @@ for details_row, ia_row, attendance_row in itertools.zip_longest(
     pdf_file_path = os.path.join(pdf_dir, pdf_file_name)
     print("pdf file path", pdf_file_path)
 
+    pdf_url = os.getenv('NGROK_BASE_URL') + pdf_file_name
+    print("pdf_url", pdf_url)
+
     # to prevent clutter of the html_files folder the html files
     # will be moved to a backup directory 
     backup_file_path = os.path.join(html_backup_dir,html_file_name)
@@ -197,7 +271,27 @@ for details_row, ia_row, attendance_row in itertools.zip_longest(
                     "HOD of Physiology,\n"+
                     "Govt. Tiruvarur Medical College, Tiruvarur")
 
+    if operation_mode == "test":
+        pass
+    elif operation_mode == 'check_msg':
+        # if the operation mode was to check sending whastapp messages
+        # this the message will be sent to my phone
+        # the for loop will also be broken
+        phone = str(91) + os.getenv("SELF_PHONE")
+        print(phone)
+        # sendFileViaWhatsapp_post(token,phone,pdf_file_path, test_caption)
+        sendFileViaWhatsapp_get2(token, phone, pdf_url, test_caption)
+        break
+    elif operation_mode == "production" :
+        # sendFileViaWhatsapp_post(token, phone, pdf_file_path, test_caption)
+        sendFileViaWhatsapp_get2(token, phone, pdf_url, test_caption)
+
+    elif operation_mode == "stray":
+        sendFileViaWhatsapp_get2(token, phone, pdf_url, test_caption)
+
+    '''
     sendFileViaWhatsapp_post(thiruvarur_token, phone, pdf_file_path, test_caption)
+    '''
     
 
     # to prevent clutter of the pdf files that were sent
