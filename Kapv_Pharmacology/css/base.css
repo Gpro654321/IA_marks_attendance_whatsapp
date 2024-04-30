@@ -1,0 +1,297 @@
+
+@page{
+    size: a4 portrait;
+    margin: 2mm;
+}
+
+  
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0mm;
+}  
+
+
+.seniormost {
+	display: flex;
+	flex-direction: column;
+	margin: 0mm;
+}
+
+.topBanner {
+	height: 45mm;
+	margin-left: 5mm;
+	display:flex;
+	flex-direction:row;
+}
+
+.collegeEmblem {
+	width: 43mm;
+	height: 43mm;
+	float: left;
+}
+
+.collegeEmblem img{
+	width: 100%;
+	height: 93%;
+}
+
+
+.topBannerTitle {
+	width: 158mm;
+	height: 100%;
+	float: right;
+	display: flex;
+	flex-direction: column;
+}
+
+.IEC, .college {
+	flex: 1;
+}
+
+
+.IEC {
+	color: #BB2525;
+	text-align: center;
+	font-family: Times New Roman;
+	font-style: normal;
+	font-size: 40px;
+	font-weight: 700;
+	line-height: normal;
+}
+
+.college {
+	color: #46458C;
+	text-align: center;
+	font-family: Times New Roman;
+	font-style: normal;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: normal;
+	
+}
+
+
+hr {
+	color: #BB2525;
+	background-color: #BB2525;
+	height: 2px;
+	border: 1mm;
+	margin-left: 5mm;
+}
+
+
+
+.mainContent{
+
+    height: 245mm;
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+.rightCol {
+	width: 200mm;
+	margin: 0mm;
+	display:flex;
+	flex-direction:column;
+	justify-content: flex-start;
+}
+
+
+.name {
+
+	color: #46458C;
+	text-align: left;
+	font-family: Times New Roman;
+	font-style: normal;
+	font-size: 11px;
+	font-weight: bold;
+	line-height: normal;
+
+}
+
+.designation {
+
+	color: #46458C;
+	text-align: left;
+	font-family: Times New Roman;
+	font-style: normal;
+	font-size: 10px;
+	font-weight: 350;
+	line-height: normal;
+	margin-bottom: 5px;
+
+}
+
+.members {
+	margin-left: 0mm;
+	margin-bottom:6px;
+
+}
+
+.refNo {
+
+	color: #46458C;
+	text-align: right;
+	font-family: Times New Roman;
+	font-style: normal;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: normal;
+	margin-top: 5px;
+	margin-right: 0mm;
+}
+
+.certificateTitle {
+
+	color: #BB2525;
+	text-align: center;
+	font-family: Times New Roman;
+	font-style: normal;
+	font-size: 20px;
+	font-weight: 700;
+	line-height: normal;
+	margin: 20px;
+}
+
+.certificateContent {
+	text-align: justify;
+	text-justify: inter-word;
+	text-indent: 50px;
+	word-wrap: break-word;
+}
+
+.certificateContent1 {
+
+	color: #46458C;
+	text-align: justify;
+	text-justify: inherit;
+	font-family: Times New Roman;
+	font-style: normal;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: normal;
+	
+
+}
+
+.secondline {
+	color: #46458C;
+	text-align: justify;
+	text-justify: inherit;
+	margin-left:50px;
+	text-indent: 70px;
+	font-family: Times New Roman;
+	font-style: normal;
+	font-size: 15px;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.certificateContent2 {
+
+	color: #BB2525;
+	text-align: justify;
+	text-justify: inherit;
+	text-indent: 50px;
+	font-family: Times New Roman;
+	font-style: normal;
+	font-size: 15px;
+	font-weight: 500;
+	line-height: normal;
+
+}
+
+.certificateContent3 {
+
+	color: #BB2525;
+	text-align: justify;
+	text-justify: inherit;
+	text-indent: 70px;
+	font-family: Times New Roman;
+	font-style: normal;
+	font-size: 13px;
+	font-weight: 500;
+	line-height: normal;
+}
+
+.certificateContent4 {
+
+	color: #46458C;
+	text-align: justify;
+	text-justify: inherit;
+	font-family: Times New Roman;
+	font-style: italic;
+	font-size: 12px;
+	font-weight: 500;
+	line-height: normal;
+}
+
+table, td {
+	margin-left:70px;
+	border: 1px solid;
+	border-collapse: collapse;
+	color: #46458C;
+	font-family: Times New Roman;
+	font-style: normal;
+	font-size: 17px;
+	font-weight: 400;
+	text-align: center;
+
+}
+
+th {
+	margin-left:50px;
+	border: 1px solid;
+	border-collapse: collapse;
+	color: #46458C;
+	font-family: Times New Roman;
+	font-style: normal;
+	font-size: 20px;
+	font-weight: 600;
+	text-align: center;
+}
+
+
+.signingArea{
+	display: flex;
+	/* to shift this div to the right*/
+	flex-direction:column;
+	justify-content: flex-end;
+	width: fit-content;
+	margin-top: 100px;
+	align-self:flex-end;
+
+}
+
+.signingAuthority {
+
+	color: #46458C;
+	text-align: right;
+	font-family: Times New Roman;
+	font-style: normal;
+	font-size: 15px;
+	font-weight: 400;
+	line-height: normal;
+
+}
+
+.signingAuthorityDesignation {
+
+	color: #46458C;
+	text-align: right;
+	font-family: Times New Roman;
+	font-style: normal;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: normal;
+
+}
+
+.parentsSignature img{
+	margin-left: 5mm;
+	width:20%;
+	height:90%;
+
+}
