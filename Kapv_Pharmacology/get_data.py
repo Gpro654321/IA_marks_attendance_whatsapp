@@ -55,6 +55,7 @@ ngrok_conf = str(
 )
 
 if ngrok_conf != 'yes':
+    # ngrok http "file:///home/gg/Dev/Internal_attendance_Whatsapp/Kapv_Pharmacology/pdf_files/" --domain "gladly-leading-moose.ngrok-free.app"
     sys.exit("Ngrok has not yet started, Restart after ngrok is started")
 
 
